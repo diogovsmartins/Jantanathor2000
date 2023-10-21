@@ -3,7 +3,9 @@ package org.example;
 
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Getter
 @Setter
@@ -13,8 +15,7 @@ import java.util.List;
 public class Tree {
 
     private Leaf firstLeaf;
-    private List<Object> response;
-
+    private Map<String, Object> response;
 
     //create a method to get the list of responses and create a map of variables and set the respective response
     //to the answer in the value, later on this map will be used to decide which is the outcome of the users decision

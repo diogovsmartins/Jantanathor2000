@@ -1,13 +1,14 @@
 import org.example.Leaf;
+import org.example.Objective;
 import org.example.Tree;
 import org.example.TreeHandler;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class TestTree {
+class TestTree {
 
     @Test
     void testTreeStructure(){
@@ -23,7 +24,7 @@ public class TestTree {
                 .build();
 
         Leaf firstLeaf= Leaf.builder()
-                .question("Is Age Bigger than 15? ")
+                .question("Is Age Bigger than 15?")
                 .possibleAnswers(List.of(Boolean.FALSE, Boolean.TRUE))
                 .leftLeaf(leftLeaf)
                 .rightLeaf(rightLeaf).build();
@@ -32,11 +33,24 @@ public class TestTree {
         TreeHandler treeHandler=
                 TreeHandler
                         .builder()
-                        .tree(
-                                Tree.builder().firstLeaf(firstLeaf).build())
+                        .tree(Tree.builder()
+                                .firstLeaf(firstLeaf)
+                                .response(new HashMap<>())
+                                .build())
                         .build();
 
-        treeHandler.getTree().getFirstLeaf().answerQuestion(false);
+        treeHandler.startQuestions();
+        Objective objective1 = Objective.builder()
+                .objectivesMap(Map.of("Is Age Bigger than 15?",false, "Is Male?", true))
+                .objectiveDescription("The objective given the user responses is a male under 15 years old")
+                .build();
+        Objective objective2 = Objective.builder()
+                .objectivesMap(Map.of("Is Age Bigger than 15?",true, "Has a job?", true))
+                .objectiveDescription("The objective given the user responses is a male over 15 years old")
+                .build();
+
+
+        treeHandler.calculateObjective(List.of(objective1, objective2));
 
         assertNotNull(treeHandler);
     }
