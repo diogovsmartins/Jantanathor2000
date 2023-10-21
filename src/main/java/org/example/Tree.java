@@ -16,5 +16,9 @@ public class Tree {
     private List<Object> response;
 
 
+    //create a method to get the list of responses and create a map of variables and set the respective response
+    //to the answer in the value, later on this map will be used to decide which is the outcome of the users decision
+
+
 
 }
