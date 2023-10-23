@@ -1,13 +1,15 @@
-package org.example;
+package org.example.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.*;
 import org.apache.commons.collections4.CollectionUtils;
+import org.example.domain.data.Objective;
+import org.example.domain.data.ObjectiveList;
+import org.example.domain.Tree;
 
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -23,24 +25,24 @@ public class TreeHandler {
     private ObjectMapper jsonObjectMapper;
     private List<Objective> objectivesList;
 
-    public void startQuestions(){
+    public void startQuestions(final JFrame jFrame) {
         fillTreeAndObjectives();
-        this.tree.getFirstLeaf().answerQuestion(this.tree);
+        this.tree.getFirstLeaf().answerQuestion(this.tree, jFrame);
         this.tree.getResponse().entrySet().stream().forEach(System.out::println);
         //call database, retrive list of objectives available and calculate resulting object comparing with user response
-//        calculateObjective();
+        calculateObjective(jFrame);
     }
 
 
-    public void calculateObjective(){
+    public void calculateObjective(final JFrame jFrame) {
         Map<Boolean, List<Objective>> mapOfObjectives = objectivesList.stream()
                 .collect(Collectors.groupingBy(this::isReachedObjective));
 
-        if (CollectionUtils.isNotEmpty(mapOfObjectives.get(true))){
+        if (CollectionUtils.isNotEmpty(mapOfObjectives.get(true))) {
             JOptionPane.showMessageDialog(
-                    null,
+                    jFrame,
                     mapOfObjectives.get(true).get(0).getObjectiveDescription(),
-                    "Resulting Objective", // Title
+                    "Resulting Objective",
                     JOptionPane.INFORMATION_MESSAGE
             );
 
@@ -50,7 +52,8 @@ public class TreeHandler {
                     "Is not an Objective",
                     "Resulting Objective", // Title
                     JOptionPane.INFORMATION_MESSAGE
-            );}
+            );
+        }
     }
 
     private boolean isReachedObjective(Objective objective) {
@@ -63,14 +66,19 @@ public class TreeHandler {
                 });
     }
 
-    private void fillTreeAndObjectives(){
-        try{
+    private void fillTreeAndObjectives() {
+        try {
             this.tree = jsonObjectMapper.readValue(new File("src/main/resources/tree.json"), Tree.class);
             this.objectivesList = jsonObjectMapper.readValue(new File("src/main/resources/objectives.json"), ObjectiveList.class).getObjectiveList();
-        }catch (IOException ioException){
+        } catch (IOException ioException) {
 
             System.out.println("Something went wrong while generating the tree.");
         }
 
     }
+
+    public void addObjecttiveToTheList(final JFrame jFrame) {
+        this.tree.getFirstLeaf().answerQuestion(this.tree, jFrame);
+    }
+
 }

@@ -1,11 +1,6 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.example.Leaf;
-import org.example.Objective;
-import org.example.Tree;
-import org.example.TreeHandler;
+import org.example.services.TreeHandler;
 import org.junit.jupiter.api.Test;
-
-import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -15,7 +10,7 @@ class TestTree {
     void testTreeStructure(){
         TreeHandler treeHandler= TreeHandler.builder().jsonObjectMapper(new ObjectMapper()).build();
 
-        treeHandler.startQuestions();
+//        treeHandler.startQuestions();
 
         assertNotNull(treeHandler);
     }

@@ -1,12 +1,11 @@
-package org.example;
+package org.example.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+import org.example.domain.Leaf;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Getter
