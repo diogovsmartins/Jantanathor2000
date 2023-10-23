@@ -1,0 +1,25 @@
+{
+  "firstLeaf": {
+    "question": "Do you feel like cooking today?",
+    "leftLeaf": {
+      "question": "Do you want to eat foods with bread?",
+
+      "leftLeaf": {
+        "question": "Do you prefer fried over baked food?"
+      },
+
+      "rightLeaf": {
+        "question": "Do you want to eat something with beef steak?"
+      }
+    },
+    "rightLeaf": {
+      "question": "Do you have at least 30 minutes to cook?",
+      "leftLeaf":{
+        "question": "Do you prefer to cook a snack over a full meal?"
+      },
+      "rightLeaf":{
+        "question": "WAS NOT FILLED"
+      }
+    }
+  }
+}

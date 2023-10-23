@@ -1,5 +1,6 @@
 package org.example;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import javax.swing.*;
@@ -15,10 +16,12 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 public class Leaf {
 
+    @JsonProperty("rightLeaf")
     private Leaf rightLeaf;
+    @JsonProperty("leftLeaf")
     private Leaf leftLeaf;
+    @JsonProperty("question")
     private String question;
-    private List<Object> possibleAnswers;
 
     public void answerQuestion(Tree tree){
         //get user choice and save to list of responses
