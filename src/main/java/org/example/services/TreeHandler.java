@@ -3,6 +3,8 @@ package org.example.services;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.*;
 import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.collections4.MapUtils;
+import org.example.domain.Leaf;
 import org.example.domain.data.Objective;
 import org.example.domain.data.ObjectiveList;
 import org.example.domain.Tree;
@@ -48,7 +50,7 @@ public class TreeHandler {
 
         } else {
             JOptionPane.showMessageDialog(
-                    null,
+                    jFrame,
                     "Is not an Objective",
                     "Resulting Objective", // Title
                     JOptionPane.INFORMATION_MESSAGE
@@ -78,7 +80,53 @@ public class TreeHandler {
     }
 
     public void addObjecttiveToTheList(final JFrame jFrame) {
+        fillTreeAndObjectives();
         this.tree.getFirstLeaf().answerQuestion(this.tree, jFrame);
+        String objectiveDescription = JOptionPane.showInputDialog(
+                jFrame,
+                "Please, enter the description of the objective",
+                "Objective description registration",
+                JOptionPane.INFORMATION_MESSAGE
+        );
+
+        try {
+            File file = new File("src/main/resources/objectives.json");
+            objectivesList.add(Objective
+                    .builder()
+                    .objectivesMap(this.tree.getResponse())
+                    .objectiveDescription(objectiveDescription)
+                    .build());
+
+            jsonObjectMapper.writeValue(file, objectivesList);
+        } catch (IOException ioException) {
+            System.out.println("Something went wrong while adding objective.");
+        }
+
+    }
+
+    public void editTreeRules(final JFrame jFrame){
+        fillTreeAndObjectives();
+
+        String leafQuestion = JOptionPane.showInputDialog(
+                jFrame,
+                "Please, enter the question that will be added the tree",
+                "Add question to the Tree",
+                JOptionPane.INFORMATION_MESSAGE
+        );
+
+
+
+
+        boolean noMoreLeafsAvailable=false;
+        do{
+            tree.getFirstLeaf().getQuestion();
+
+        }while(noMoreLeafsAvailable==true);
+
+        this.tree.getFirstLeaf().answerQuestion(this.tree, jFrame);
+        System.out.println(tree);
+
+
     }
 
 }

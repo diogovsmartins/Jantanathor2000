@@ -1,0 +1,72 @@
+{
+  "objectiveList":[
+    {
+      "objectiveDescription": "Based on your previous answers a hot-dog may be a good match.",
+      "objectivesMap": {
+        "Do you feel like cooking today?": false,
+        "Do you want to eat foods with bread?": true,
+        "Do you want to eat something with beef steak?": false
+      }
+    },
+    {
+      "objectivesMap": {
+        "objectiveDescription": "Based on your previous answers a hamburger may be a good match.",
+        "ObjectivesMap": {
+          "Do you feel like cooking today?": false,
+          "Do you want to eat foods with bread?": true,
+          "Do you want to eat something with beef steak?": true
+        }
+      }
+    },
+    {
+      "objectiveDescription": "Based on your previous answers a pizza may be a good match.",
+      "objectivesMap": {
+        "Do you feel like cooking today?": false,
+        "Do you want to eat foods with bread?": false,
+        "Do you prefer fried over baked food?": false
+      }
+    },
+    {
+      "objectivesMap": {
+        "objectiveDescription": "Based on your previous answers fried chicken can be a good match.",
+        "ObjectivesMap": {
+          "Do you feel like cooking today?": false,
+          "Do you want to eat foods with bread?": false,
+          "Do you prefer fried over baked food?": true
+        }
+      }
+    },
+    {
+      "objectiveDescription": "Based on your previous answers you could cook pasta with tomato sauce.",
+      "objectivesMap": {
+        "Do you feel like cooking today?": true,
+        "Do you have at least 30 minutes to cook?": false,
+        "Do you prefer to cook a snack over a full meal?": false
+      }
+    },
+    {
+      "objectiveDescription": "Based on your previous answers you could cook an omelette.",
+      "objectivesMap": {
+        "Do you feel like cooking today?": true,
+        "Do you have at least 30 minutes to cook?": false,
+        "Do you prefer to cook a snack over a full meal?": true
+      }
+    },
+    {
+      "objectiveDescription": "Based on your previous answers you could cook a lasagna.",
+      "objectivesMap": {
+        "Do you feel like cooking today?": true,
+        "Do you have at least 30 minutes to cook?": true,
+        "Do you feel like cooking outside today?": false
+      }
+    },
+    {
+      "objectiveDescription": "Based on your previous answers you could do a barbecue",
+      "objectivesMap": {
+        "Do you feel like cooking today?": true,
+        "Do you have at least 30 minutes to cook?": true,
+        "Do you feel like cooking outside today?": true
+      }
+    }
+  ]
+}

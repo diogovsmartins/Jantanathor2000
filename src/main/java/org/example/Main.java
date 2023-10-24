@@ -33,7 +33,7 @@ public class Main {
         showMessageButton.addActionListener(e -> treeHandler.startQuestions(mainWindow) );
 
         JButton editTreeRules = new JButton("Edit Tree Rules");
-        editTreeRules.addActionListener(e -> System.out.println("clicked tree rules") );
+        editTreeRules.addActionListener(e -> treeHandler.editTreeRules(mainWindow) );
 
         JButton editObjective = new JButton("Edit Objectives");
         editObjective.addActionListener(e -> treeHandler.addObjecttiveToTheList(mainWindow) );
