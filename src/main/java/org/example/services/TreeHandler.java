@@ -31,7 +31,6 @@ public class TreeHandler {
         fillTreeAndObjectives();
         this.tree.getFirstLeaf().answerQuestion(this.tree, jFrame);
         this.tree.getResponse().entrySet().stream().forEach(System.out::println);
-        //call database, retrive list of objectives available and calculate resulting object comparing with user response
         calculateObjective(jFrame);
     }
 
@@ -52,7 +51,7 @@ public class TreeHandler {
             JOptionPane.showMessageDialog(
                     jFrame,
                     "Is not an Objective",
-                    "Resulting Objective", // Title
+                    "Resulting Objective",
                     JOptionPane.INFORMATION_MESSAGE
             );
         }
@@ -107,26 +106,19 @@ public class TreeHandler {
     public void editTreeRules(final JFrame jFrame){
         fillTreeAndObjectives();
 
-        String leafQuestion = JOptionPane.showInputDialog(
-                jFrame,
-                "Please, enter the question that will be added the tree",
-                "Add question to the Tree",
-                JOptionPane.INFORMATION_MESSAGE
-        );
+        try{
+            Tree newTree = jsonObjectMapper.readValue(JOptionPane.showInputDialog(
+                    jFrame,
+                    "Please, enter the question that will be added the tree," +
+                            " use a JSON representing the wanted tree structure.",
+                    "Edit Tree",
+                    JOptionPane.INFORMATION_MESSAGE
+            ), Tree.class);
 
-
-
-
-        boolean noMoreLeafsAvailable=false;
-        do{
-            tree.getFirstLeaf().getQuestion();
-
-        }while(noMoreLeafsAvailable==true);
-
-        this.tree.getFirstLeaf().answerQuestion(this.tree, jFrame);
-        System.out.println(tree);
-
-
+            jsonObjectMapper.writeValue(new File("src/main/resources/tree.json"), newTree);
+        }catch (IOException ioException){
+            System.out.println("An error occurred while saving the tree.");
+        }
     }
 
 }

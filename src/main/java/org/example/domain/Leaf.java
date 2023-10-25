@@ -12,7 +12,6 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Leaf {
-
     @JsonProperty("rightLeaf")
     private Leaf rightLeaf;
     @JsonProperty("leftLeaf")

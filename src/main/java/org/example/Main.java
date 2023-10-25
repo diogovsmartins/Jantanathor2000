@@ -10,21 +10,20 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class Main {
     public static void main(String[] args) {
+        createWindow();
+    }
+
+    private static void createWindow () {
         TreeHandler treeHandler = TreeHandler
                 .builder()
                 .jsonObjectMapper(new ObjectMapper())
                 .build();
 
-        createWindow(treeHandler);
-    }
-
-    private static void createWindow (final TreeHandler treeHandler) {
         JFrame mainWindow = new JFrame("Jantanathor2000");
         mainWindow.setLayout(new BorderLayout());
 
-        // Create an empty panel to act as a spacer for top margin
         JPanel topSpacer = new JPanel();
-        topSpacer.setPreferredSize(new Dimension(1, 300)); // Adjust the height for the desired top margin
+        topSpacer.setPreferredSize(new Dimension(1, 300));
 
         JPanel centerPanel = new JPanel();
         centerPanel.setLayout(new FlowLayout(FlowLayout.CENTER));

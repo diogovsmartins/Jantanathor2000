@@ -11,7 +11,6 @@ import java.util.Map;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Objective {
-
     @JsonProperty("objectivesMap")
     private Map<String, Object> objectivesMap;
     @JsonProperty("objectiveDescription")
