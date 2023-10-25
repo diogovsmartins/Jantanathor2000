@@ -3,7 +3,6 @@ package org.example.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
-import org.example.domain.Leaf;
 
 import java.util.HashMap;
 import java.util.Map;
